@@ -1,34 +1,34 @@
 package com.android.popularlibraries
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import com.android.popularlibraries.databinding.ActivityMainBinding
+import com.android.popularlibraries.presenter.ButtonType
+import com.android.popularlibraries.presenter.MainPresenter
+import com.android.popularlibraries.view.MainView
 
 class MainActivity : AppCompatActivity(), MainView {
 
-    private lateinit var mainBinding: ActivityMainBinding
+    private var vb: ActivityMainBinding? = null
 
     private val presenter = MainPresenter(this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        mainBinding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(mainBinding.root)
-        val listener = View.OnClickListener {
-            presenter.counterClick(it.id)
-        }
-        mainBinding.btnCounter1.setOnClickListener(listener)
-        mainBinding.btnCounter2.setOnClickListener(listener)
-        mainBinding.btnCounter3.setOnClickListener(listener)
+        vb = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(vb?.root)
+
+        vb?.btnCounter1?.setOnClickListener { presenter.counterClick(ButtonType.FIRST) }
+        vb?.btnCounter2?.setOnClickListener { presenter.counterClick(ButtonType.SECOND) }
+        vb?.btnCounter3?.setOnClickListener { presenter.counterClick(ButtonType.THIRD) }
     }
 
     //Подсказка к ПЗ: поделить на 3 отдельные функции и избавиться от index
-    override fun setButtonText(index: Int, text: String) {
+    override fun setButtonText(index: ButtonType, text: String) {
         when (index) {
-            0 -> mainBinding.btnCounter1.text = text
-            1 -> mainBinding.btnCounter2.text = text
-            2 -> mainBinding.btnCounter3.text = text
+            ButtonType.FIRST -> vb?.btnCounter1?.text = text
+            ButtonType.SECOND -> vb?.btnCounter2?.text = text
+            ButtonType.THIRD -> vb?.btnCounter3?.text = text
         }
     }
 }
