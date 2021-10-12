@@ -1,4 +1,4 @@
-package com.android.popularlibraries
+package com.android.popularlibraries.model
 
 class CountersModel {
     private val counters = mutableListOf(0, 0, 0)
