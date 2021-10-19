@@ -1,7 +1,12 @@
 package com.android.popularlibraries.view
 
-import com.android.popularlibraries.presenter.CounterType
+import moxy.MvpView
+import moxy.viewstate.strategy.AddToEndSingleStrategy
+import moxy.viewstate.strategy.StateStrategyType
 
-interface IMainView {
-    fun setButtonText(index: CounterType, text: String)
+@StateStrategyType(AddToEndSingleStrategy::class)
+interface IMainView : MvpView {
+    fun setButtonText1(text: String)
+    fun setButtonText2(text: String)
+    fun setButtonText3(text: String)
 }
