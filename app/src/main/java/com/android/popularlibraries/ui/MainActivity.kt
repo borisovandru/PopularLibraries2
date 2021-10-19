@@ -1,38 +1,49 @@
 package com.android.popularlibraries.ui
 
 import android.os.Bundle
+import com.android.popularlibraries.App
+import com.android.popularlibraries.R
 import com.android.popularlibraries.databinding.ActivityMainBinding
-import com.android.popularlibraries.model.CountersModel
-import com.android.popularlibraries.presenter.MainPresenter
+import com.android.popularlibraries.domain.presenter.main.MainPresenter
+import com.android.popularlibraries.ui.screens.Screens
+import com.android.popularlibraries.ui.util.IBackButtonListener
 import com.android.popularlibraries.view.IMainView
+import com.github.terrakok.cicerone.androidx.AppNavigator
 import moxy.MvpAppCompatActivity
 import moxy.ktx.moxyPresenter
 
 class MainActivity : MvpAppCompatActivity(), IMainView {
 
+    private val navigator = AppNavigator(
+        this, R.id.container
+    )
     private lateinit var activityMainBinding: ActivityMainBinding
-    private val presenter by moxyPresenter { MainPresenter(CountersModel()) }
+
+    private val presenter by moxyPresenter { MainPresenter(App.instance.router, Screens()) }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         activityMainBinding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(activityMainBinding.root)
-
-        activityMainBinding.btnCounter1.setOnClickListener{ presenter.setButtonText1()}
-        activityMainBinding.btnCounter2.setOnClickListener{ presenter.setButtonText2()}
-        activityMainBinding.btnCounter3.setOnClickListener{ presenter.setButtonText3()}
     }
 
-    override fun setButtonText1(text: String) {
-        activityMainBinding.btnCounter1.text = text
+    override fun onResumeFragments() {
+        super.onResumeFragments()
+        App.instance.navigatorHolder.setNavigator(navigator)
     }
 
-    override fun setButtonText2(text: String) {
-        activityMainBinding.btnCounter2.text = text
+    override fun onPause() {
+        super.onPause()
+        App.instance.navigatorHolder.removeNavigator()
     }
 
-    override fun setButtonText3(text: String) {
-        activityMainBinding.btnCounter3.text = text
+    override fun onBackPressed() {
+        supportFragmentManager.fragments.forEach {
+            if (it is IBackButtonListener && it.backPressed()) {
+                return
+            }
+        }
+        presenter.backClicked()
     }
-
 }

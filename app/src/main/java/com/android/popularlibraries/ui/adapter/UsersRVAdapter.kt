@@ -1,10 +1,10 @@
-package com.android.popularlibraries.ui
+package com.android.popularlibraries.ui.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.android.popularlibraries.databinding.ItemUserBinding
-import com.android.popularlibraries.presenter.IUserListPresenter
+import com.android.popularlibraries.domain.presenter.user_list.IUserListPresenter
 import com.android.popularlibraries.view.IUserItemView
 
 class UsersRVAdapter(private val presenter: IUserListPresenter) :

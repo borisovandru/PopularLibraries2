@@ -1,10 +1,9 @@
-package com.android.popularlibraries.model
+package com.android.popularlibraries.domain.model
 
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 data class GithubUser(
-    val login: String,
-    val pass: String
+    val login: String
 ) : Parcelable
