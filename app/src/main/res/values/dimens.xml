@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="name_app_splash">30sp</dimen>
+    <dimen name="height_progress_bar_splash">30dp</dimen>
+    <dimen name="user_details_login">25sp</dimen>
+    <dimen name="user_list_padding_top">16dp</dimen>
+    <dimen name="user_list_padding_bottom">16dp</dimen>
+    <dimen name="login_user_list_margin_start">16dp</dimen>
+</resources>
