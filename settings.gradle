@@ -7,3 +7,4 @@ dependencyResolutionManagement {
 }
 rootProject.name = "PopularLibraries"
 include ':app'
+include ':imageconverter'
