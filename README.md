@@ -2,15 +2,15 @@
 
 Паттерн разработки: MVP
 
-RxJava 2
+Cicerone
 
 Moxy
+
+RxJava 2
 
 Retrofit
 
 Room
-
-Cicerone
 
 Dependency Injection
 
