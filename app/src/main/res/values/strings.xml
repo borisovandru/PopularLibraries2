@@ -1,9 +1,15 @@
 <resources>
-    <string name="app_name">Popular Libraries</string>
-    <string name="app_name_splash">LIBRARIES</string>
-    <string name="name_counter_of_days">Счетчик Дней</string>
-    <string name="name_counter_of_minutes">Счетчик Минут</string>
-    <string name="name_counter_of_likes">Счетчик Лайков</string>
-    <string name="default_value">0</string>
-    <string name="text_about_error">Такой кнопки не существует</string>
+    <string name="app_name">Code Hub</string>
+    <string name="action_settings">Settings</string>
+    <string name="login_1">login 1</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="github_login">gitHub login</string>
+    <string name="error_loading">logins loading Error!</string>
+    <string name="error_profile">user profile loading Error!</string>
+    <string name="like_description_fab">like it</string>
+    <string name="counter_text">0</string>
+    <string name="like_repository_icon">like repository icon</string>
+    <string name="item_repo_description">user repository description</string>
+    <string name="item_repo_name">repository name</string>
+    <string name="login_text_example">login example</string>
 </resources>
