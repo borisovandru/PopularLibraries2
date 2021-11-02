@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.users.UsersFragment">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/users_recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipToPadding="false"
+        android:paddingTop="@dimen/margin_top"
+        android:paddingBottom="@dimen/margin_bottom"
+        tools:listitem="@layout/item_repositories" />
+
+    <include
+        android:id="@+id/loading_layout"
+        layout="@layout/base_loading" />
+
+</FrameLayout>
