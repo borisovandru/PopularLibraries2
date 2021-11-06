@@ -3,7 +3,7 @@ package com.android.popularlibraries.ui.users
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.android.popularlibraries.data.GithubUser
+import com.android.popularlibraries.data.model.GithubUser
 import com.android.popularlibraries.databinding.ItemUserBinding
 import com.android.popularlibraries.data.domain.UserItemView
 import com.android.popularlibraries.data.domain.UserListPresenter
@@ -40,5 +40,4 @@ class UsersAdapter(private val presenter: UserListPresenter) :
             vb.avatarImageView.loadInfo(url)
         }
     }
-
 }

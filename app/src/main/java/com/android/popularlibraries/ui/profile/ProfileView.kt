@@ -1,6 +1,6 @@
 package com.android.popularlibraries.ui.profile
 
-import com.android.popularlibraries.data.GithubUser
+import com.android.popularlibraries.data.model.GithubUser
 import com.android.popularlibraries.ui.common.ProgressView
 import moxy.MvpView
 import moxy.viewstate.strategy.AddToEndSingleStrategy

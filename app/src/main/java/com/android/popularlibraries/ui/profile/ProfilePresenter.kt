@@ -1,12 +1,15 @@
 package com.android.popularlibraries.ui.profile
 
 import com.android.popularlibraries.App
-import com.android.popularlibraries.data.GithubUser
-import com.android.popularlibraries.data.UsersRepository
-import com.android.popularlibraries.data.domain.MinusLikeEvent
-import com.android.popularlibraries.data.domain.PlusLikeEvent
-import com.android.popularlibraries.data.repository.GithubUsersRepoImpl
 import com.android.popularlibraries.SchedulerProvider
+import com.android.popularlibraries.data.domain.MinusLikeEvent
+import com.android.popularlibraries.data.domain.NetworkStatusImpl
+import com.android.popularlibraries.data.domain.PlusLikeEvent
+import com.android.popularlibraries.data.model.GithubUser
+import com.android.popularlibraries.data.model.UsersRepository
+import com.android.popularlibraries.data.repository.GithubUserRepoCombinedImpl
+import com.android.popularlibraries.data.repository.GithubUsersLocalRepoImpl
+import com.android.popularlibraries.data.repository.GithubUsersWebRepoImpl
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 import moxy.MvpPresenter
 
@@ -27,7 +30,12 @@ class ProfilePresenter(
 
     private var currentDisposable = CompositeDisposable()
     private val schedulerProvider: SchedulerProvider = SchedulerProvider()
-    private val usersRepoImpl = GithubUsersRepoImpl(app.api, schedulerProvider)
+    private val usersRepoImpl = GithubUserRepoCombinedImpl(
+        GithubUsersLocalRepoImpl(app.gitHubDB),
+        GithubUsersWebRepoImpl(app.api),
+        NetworkStatusImpl(app),
+        schedulerProvider
+    )
     val userRepoList = mutableListOf<UsersRepository>()
 
     private fun setUser() {
@@ -45,7 +53,7 @@ class ProfilePresenter(
 
     private fun setRepoList() {
         githubUser?.reposUrl?.let {
-            currentDisposable.add(usersRepoImpl.userRepos(it)
+            currentDisposable.add(usersRepoImpl.userRepos(it, githubUser.id)
                 .observeOn(schedulerProvider.ui())
                 .subscribe(
                     { userRepoListIn ->

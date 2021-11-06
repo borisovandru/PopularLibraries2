@@ -1,6 +1,6 @@
 package com.android.popularlibraries.data.domain
 
-import com.android.popularlibraries.data.GithubUser
+import com.android.popularlibraries.data.model.GithubUser
 
 sealed class AppState {
 

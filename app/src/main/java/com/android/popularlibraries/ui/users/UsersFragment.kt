@@ -1,5 +1,6 @@
 package com.android.popularlibraries.ui.users
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -47,6 +48,7 @@ class UsersFragment : MvpAppCompatFragment(), UsersView, BackButtonListener {
         vb?.usersRecyclerView?.adapter = adapter
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     override fun updateList() {
         adapter?.notifyDataSetChanged()
     }
