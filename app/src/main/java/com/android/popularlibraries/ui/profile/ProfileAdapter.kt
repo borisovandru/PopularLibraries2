@@ -3,7 +3,7 @@ package com.android.popularlibraries.ui.profile
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.android.popularlibraries.data.UsersRepository
+import com.android.popularlibraries.data.model.UsersRepository
 import com.android.popularlibraries.databinding.ItemRepositoriesBinding
 import com.android.popularlibraries.ui.utils.setTint
 

@@ -2,12 +2,15 @@ package com.android.popularlibraries.ui.users
 
 import com.android.popularlibraries.AndroidScreens
 import com.android.popularlibraries.App
-import com.android.popularlibraries.data.GithubUser
+import com.android.popularlibraries.SchedulerProvider
 import com.android.popularlibraries.data.domain.AppState
+import com.android.popularlibraries.data.domain.NetworkStatusImpl
 import com.android.popularlibraries.data.domain.UserItemView
 import com.android.popularlibraries.data.domain.UserListPresenter
-import com.android.popularlibraries.data.repository.GithubUsersRepoImpl
-import com.android.popularlibraries.SchedulerProvider
+import com.android.popularlibraries.data.model.GithubUser
+import com.android.popularlibraries.data.repository.GithubUserRepoCombinedImpl
+import com.android.popularlibraries.data.repository.GithubUsersLocalRepoImpl
+import com.android.popularlibraries.data.repository.GithubUsersWebRepoImpl
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 import moxy.MvpPresenter
 
@@ -30,7 +33,12 @@ class UsersPresenter(app: App) :
     }
 
     private val schedulerProvider: SchedulerProvider = SchedulerProvider()
-    private val usersRepo = GithubUsersRepoImpl(app.api, schedulerProvider)
+    private val usersRepo = GithubUserRepoCombinedImpl(
+        GithubUsersLocalRepoImpl(app.gitHubDB),
+        GithubUsersWebRepoImpl(app.api),
+        NetworkStatusImpl(app),
+        schedulerProvider
+    )
     private val router = app.router
 
     val usersListPresenter = UsersListPresenter()
@@ -75,7 +83,6 @@ class UsersPresenter(app: App) :
         }
     }
 
-
     fun backPressed(): Boolean {
         router.exit()
         return true
@@ -85,5 +92,4 @@ class UsersPresenter(app: App) :
         currentDisposable.dispose()
         super.onDestroy()
     }
-
 }

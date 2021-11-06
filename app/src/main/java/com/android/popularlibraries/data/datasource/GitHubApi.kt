@@ -1,7 +1,7 @@
 package com.android.popularlibraries.data.datasource
 
-import com.android.popularlibraries.data.GithubUser
-import com.android.popularlibraries.data.UsersRepository
+import com.android.popularlibraries.data.model.GithubUser
+import com.android.popularlibraries.data.model.UsersRepository
 import io.reactivex.rxjava3.core.Single
 import retrofit2.http.GET
 import retrofit2.http.Path

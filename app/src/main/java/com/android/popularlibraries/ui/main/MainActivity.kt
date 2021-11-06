@@ -13,7 +13,7 @@ import com.google.android.material.snackbar.Snackbar
 import moxy.MvpAppCompatActivity
 import moxy.ktx.moxyPresenter
 
-class MainActivity : MvpAppCompatActivity(), MainView {
+class MainActivity : MvpAppCompatActivity(), MainView  {
 
     private lateinit var binding: ActivityScrollingBinding
     private val navigator = AppNavigator(this, R.id.container)
@@ -65,7 +65,7 @@ class MainActivity : MvpAppCompatActivity(), MainView {
 
     override fun onBackPressed() {
         supportFragmentManager.fragments.forEach {
-            if (it is BackButtonListener && it.backPressed()) {
+            if(it is BackButtonListener && it.backPressed()){
                 return
             }
         }

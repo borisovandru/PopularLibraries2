@@ -1,8 +1,10 @@
 package com.android.popularlibraries
 
 import android.app.Application
+import androidx.room.Room
 import com.android.popularlibraries.data.datasource.GitHubApi
 import com.android.popularlibraries.data.domain.EventBus
+import com.android.popularlibraries.data.room.GithubDatabase
 import com.facebook.stetho.Stetho
 import com.facebook.stetho.okhttp3.StethoInterceptor
 import com.github.terrakok.cicerone.Cicerone
@@ -15,6 +17,7 @@ import retrofit2.adapter.rxjava3.RxJava3CallAdapterFactory
 import retrofit2.converter.moshi.MoshiConverterFactory
 
 const val BASE_URL = "https://api.github.com"
+const val DB_NAME = "githubDB"
 
 class App : Application() {
 
@@ -26,8 +29,9 @@ class App : Application() {
     val navigatorHolder get() = cicerone.getNavigatorHolder()
     val router get() = cicerone.router
 
+    // rx
     val eventBus = EventBus
-    // репозиторий
+
 
     //okhttp3
     private val okClient = OkHttpClient.Builder()
@@ -39,6 +43,8 @@ class App : Application() {
         Stetho.initializeWithDefaults(this)
     }
 
+    // репозиторий
+    //api
     private val moshi = Moshi.Builder()
         .add(KotlinJsonAdapterFactory())
         .build()
@@ -53,5 +59,11 @@ class App : Application() {
             .build()
             .create(GitHubApi::class.java)
     }
+
+    //room
+    val gitHubDB
+        get() = Room
+            .databaseBuilder(this, GithubDatabase::class.java, DB_NAME)
+            .build()
 
 }

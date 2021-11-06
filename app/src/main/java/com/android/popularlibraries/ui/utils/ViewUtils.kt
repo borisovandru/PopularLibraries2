@@ -10,7 +10,7 @@ fun ImageView.setTint(likeCounter: Int): Int {
         this.setColorFilter(ContextCompat.getColor(context, R.color.secondaryColor))
         1
     } else {
-        this.setColorFilter(ContextCompat.getColor(context, R.color.gray))
+        this.setColorFilter(ContextCompat.getColor(context, R.color.black))
         0
     }
 }
@@ -18,7 +18,7 @@ fun ImageView.setTint(likeCounter: Int): Int {
 fun ImageView.loadInfo(url: String?) {
     Glide.with(this)
         .load(url)
-        .placeholder(R.drawable.cocos_hub)
+        .placeholder(R.drawable.black_cat2)
         .error(R.drawable.ic_load_error_vector)
         .circleCrop()
         .into(this)

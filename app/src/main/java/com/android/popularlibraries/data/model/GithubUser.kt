@@ -1,4 +1,4 @@
-package com.android.popularlibraries.data
+package com.android.popularlibraries.data.model
 
 import android.os.Parcelable
 import com.squareup.moshi.Json

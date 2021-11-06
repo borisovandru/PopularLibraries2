@@ -11,7 +11,7 @@ import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.android.popularlibraries.R
-import com.android.popularlibraries.data.GithubUser
+import com.android.popularlibraries.data.model.GithubUser
 import com.android.popularlibraries.databinding.FragmentProfileBinding
 import com.android.popularlibraries.ui.common.BackButtonListener
 import com.android.popularlibraries.ui.utils.app
