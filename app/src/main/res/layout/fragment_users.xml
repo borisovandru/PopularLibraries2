@@ -3,28 +3,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="@dimen/default_margin">
-
-    <com.google.android.material.progressindicator.CircularProgressIndicator
-        android:id="@+id/loading_indicator"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_gravity="center"
-        android:indeterminate="true" />
-
-    <Button
-        android:id="@+id/btn_reload"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        android:text="@string/repeat_loading" />
+    tools:context=".ui.users.UsersFragment">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_users"
+        android:id="@+id/users_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:clipToPadding="false"
-        android:paddingTop="@dimen/rv_vertical_padding"
-        android:paddingBottom="@dimen/rv_vertical_padding"
-        tools:listitem="@layout/item_user" />
+        android:paddingTop="@dimen/margin_top"
+        android:paddingBottom="@dimen/margin_bottom"
+        tools:listitem="@layout/item_repositories" />
+
+    <include
+        android:id="@+id/loading_layout"
+        layout="@layout/base_loading" />
+
 </FrameLayout>

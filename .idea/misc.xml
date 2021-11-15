@@ -3,6 +3,18 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/boris/AndroidStudioProjects/Kotlin/PopularLibraries2/app/src/main/res/drawable/ic_baseline_favorite_border_24.xml" value="0.11203703703703703" />
+        <entry key="..\:/Users/boris/AndroidStudioProjects/Kotlin/PopularLibraries2/app/src/main/res/drawable/ic_baseline_pets_24.xml" value="0.11203703703703703" />
+        <entry key="..\:/Users/boris/AndroidStudioProjects/Kotlin/PopularLibraries2/app/src/main/res/drawable/ic_load_error_vector.xml" value="0.11203703703703703" />
+        <entry key="..\:/Users/boris/AndroidStudioProjects/Kotlin/PopularLibraries2/app/src/main/res/font/henny_penny_regular.xml" value="0.11203703703703703" />
+        <entry key="..\:/Users/boris/AndroidStudioProjects/Kotlin/PopularLibraries2/app/src/main/res/layout/activity_scrolling.xml" value="0.22" />
+        <entry key="..\:/Users/boris/AndroidStudioProjects/Kotlin/PopularLibraries2/app/src/main/res/layout/base_loading.xml" value="0.18" />
+        <entry key="..\:/Users/boris/AndroidStudioProjects/Kotlin/PopularLibraries2/app/src/main/res/layout/fragment_profile.xml" value="0.22" />
+        <entry key="..\:/Users/boris/AndroidStudioProjects/Kotlin/PopularLibraries2/app/src/main/res/layout/fragment_users.xml" value="0.1" />
+        <entry key="..\:/Users/boris/AndroidStudioProjects/Kotlin/PopularLibraries2/app/src/main/res/layout/item_repositories.xml" value="0.2115036231884058" />
+        <entry key="..\:/Users/boris/AndroidStudioProjects/Kotlin/PopularLibraries2/app/src/main/res/layout/item_user.xml" value="0.2115036231884058" />
+        <entry key="..\:/Users/boris/AndroidStudioProjects/Kotlin/PopularLibraries2/app/src/main/res/layout/main_scrolling.xml" value="0.1" />
+        <entry key="..\:/Users/boris/AndroidStudioProjects/Kotlin/PopularLibraries2/app/src/main/res/menu/menu_scrolling.xml" value="0.25" />
         <entry key="..\:/Users/boris/AndroidStudioProjects/Libraries/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1925925925925926" />
         <entry key="..\:/Users/boris/AndroidStudioProjects/Libraries/app/src/main/res/drawable/ic_baseline_favorite_24.xml" value="0.16" />
         <entry key="..\:/Users/boris/AndroidStudioProjects/Libraries/app/src/main/res/drawable/ic_baseline_favorite_border_24.xml" value="0.18" />
