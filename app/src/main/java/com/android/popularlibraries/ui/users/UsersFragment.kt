@@ -1,6 +1,5 @@
 package com.android.popularlibraries.ui.users
 
-import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -21,7 +20,9 @@ class UsersFragment : MvpAppCompatFragment(), UsersView, BackButtonListener {
     }
 
     private val presenter: UsersPresenter by moxyPresenter {
-        UsersPresenter(requireActivity().app)
+        UsersPresenter().apply {
+            requireActivity().app.appComponent.inject(this)
+        }
     }
 
     private var adapter: UsersAdapter? = null
@@ -48,7 +49,6 @@ class UsersFragment : MvpAppCompatFragment(), UsersView, BackButtonListener {
         vb?.usersRecyclerView?.adapter = adapter
     }
 
-    @SuppressLint("NotifyDataSetChanged")
     override fun updateList() {
         adapter?.notifyDataSetChanged()
     }

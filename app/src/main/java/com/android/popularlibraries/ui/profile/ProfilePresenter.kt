@@ -1,26 +1,26 @@
 package com.android.popularlibraries.ui.profile
 
-import com.android.popularlibraries.App
-import com.android.popularlibraries.SchedulerProvider
+import com.android.popularlibraries.data.domain.EventBus
 import com.android.popularlibraries.data.domain.MinusLikeEvent
-import com.android.popularlibraries.data.domain.NetworkStatusImpl
 import com.android.popularlibraries.data.domain.PlusLikeEvent
 import com.android.popularlibraries.data.model.GithubUser
 import com.android.popularlibraries.data.model.UsersRepository
-import com.android.popularlibraries.data.repository.GithubUserRepoCombinedImpl
-import com.android.popularlibraries.data.repository.GithubUsersLocalRepoImpl
-import com.android.popularlibraries.data.repository.GithubUsersWebRepoImpl
+import com.android.popularlibraries.data.repository.GithubUsersRepo
+import com.android.popularlibraries.rx.SchedulerProvider
+import com.github.terrakok.cicerone.Router
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 import moxy.MvpPresenter
-
+import javax.inject.Inject
 
 class ProfilePresenter(
-    private val githubUser: GithubUser?,
-    app: App
+    private val githubUser: GithubUser?
 ) : MvpPresenter<ProfileView>() {
 
-    private val router = app.router
-    private val eventBus = app.eventBus
+    @Inject
+    lateinit var router: Router
+
+    @Inject
+    lateinit var eventBus: EventBus
 
     override fun onFirstViewAttach() {
         super.onFirstViewAttach()
@@ -31,12 +31,9 @@ class ProfilePresenter(
 
     private var currentDisposable = CompositeDisposable()
     private val schedulerProvider: SchedulerProvider = SchedulerProvider()
-    private val usersRepoImpl = GithubUserRepoCombinedImpl(
-        GithubUsersLocalRepoImpl(app.gitHubDB),
-        GithubUsersWebRepoImpl(app.api),
-        NetworkStatusImpl(app),
-        schedulerProvider
-    )
+
+    @Inject
+    lateinit var usersRepoImpl: GithubUsersRepo
     val userRepoList = mutableListOf<UsersRepository>()
 
     private fun setUser() {
@@ -106,3 +103,4 @@ class ProfilePresenter(
         super.onDestroy()
     }
 }
+

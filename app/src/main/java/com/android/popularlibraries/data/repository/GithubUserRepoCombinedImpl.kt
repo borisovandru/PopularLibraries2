@@ -1,6 +1,6 @@
 package com.android.popularlibraries.data.repository
 
-import com.android.popularlibraries.SchedulerProvider
+import com.android.popularlibraries.rx.SchedulerProvider
 import com.android.popularlibraries.data.domain.INetworkStatus
 import com.android.popularlibraries.data.model.GithubUser
 import com.android.popularlibraries.data.model.UsersRepository

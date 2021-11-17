@@ -1,20 +1,18 @@
 package com.android.popularlibraries.ui.users
 
 import com.android.popularlibraries.AndroidScreens
-import com.android.popularlibraries.App
-import com.android.popularlibraries.SchedulerProvider
 import com.android.popularlibraries.data.domain.AppState
-import com.android.popularlibraries.data.domain.NetworkStatusImpl
 import com.android.popularlibraries.data.domain.UserItemView
 import com.android.popularlibraries.data.domain.UserListPresenter
 import com.android.popularlibraries.data.model.GithubUser
-import com.android.popularlibraries.data.repository.GithubUserRepoCombinedImpl
-import com.android.popularlibraries.data.repository.GithubUsersLocalRepoImpl
-import com.android.popularlibraries.data.repository.GithubUsersWebRepoImpl
+import com.android.popularlibraries.data.repository.GithubUsersRepo
+import com.android.popularlibraries.rx.SchedulerProvider
+import com.github.terrakok.cicerone.Router
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 import moxy.MvpPresenter
+import javax.inject.Inject
 
-class UsersPresenter(app: App) :
+class UsersPresenter() :
     MvpPresenter<UsersView>() {
 
     class UsersListPresenter : UserListPresenter {
@@ -33,13 +31,12 @@ class UsersPresenter(app: App) :
     }
 
     private val schedulerProvider: SchedulerProvider = SchedulerProvider()
-    private val usersRepo = GithubUserRepoCombinedImpl(
-        GithubUsersLocalRepoImpl(app.gitHubDB),
-        GithubUsersWebRepoImpl(app.api),
-        NetworkStatusImpl(app),
-        schedulerProvider
-    )
-    private val router = app.router
+
+    @Inject
+    lateinit var usersRepo: GithubUsersRepo
+
+    @Inject
+    lateinit var router: Router
 
     val usersListPresenter = UsersListPresenter()
     private var currentDisposable = CompositeDisposable()

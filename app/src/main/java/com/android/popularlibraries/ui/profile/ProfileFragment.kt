@@ -11,8 +11,8 @@ import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.android.popularlibraries.R
-import com.android.popularlibraries.data.model.GithubUser
 import com.android.popularlibraries.databinding.FragmentProfileBinding
+import com.android.popularlibraries.data.model.GithubUser
 import com.android.popularlibraries.ui.common.BackButtonListener
 import com.android.popularlibraries.ui.utils.app
 import com.android.popularlibraries.ui.utils.errorMessage
@@ -35,9 +35,10 @@ class ProfileFragment : MvpAppCompatFragment(), ProfileView, BackButtonListener 
     private val binding: FragmentProfileBinding by viewBinding(FragmentProfileBinding::bind)
     private val presenter: ProfilePresenter by moxyPresenter {
         ProfilePresenter(
-            gitHubUser,
-            requireActivity().app
-        )
+            gitHubUser
+        ).apply {
+            requireActivity().app.appComponent.inject(this)
+        }
     }
     private var adapter: ProfileAdapter? = null
     private var countLike: Int = 0
@@ -46,7 +47,7 @@ class ProfileFragment : MvpAppCompatFragment(), ProfileView, BackButtonListener 
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
+
         return inflater.inflate(R.layout.fragment_profile, container, false)
     }
 
@@ -60,7 +61,6 @@ class ProfileFragment : MvpAppCompatFragment(), ProfileView, BackButtonListener 
         adapter = ProfileAdapter(presenter)
         binding.repositoriesRecyclerView.adapter = adapter
         binding.likeButton.setOnClickListener {
-            //presenter.onFavoriteClick(it.isEnabled)
         }
     }
 

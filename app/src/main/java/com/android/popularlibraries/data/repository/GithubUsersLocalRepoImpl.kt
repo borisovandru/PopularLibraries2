@@ -29,7 +29,7 @@ class GithubUsersLocalRepoImpl(db: GithubDatabase) : GithubLocalRepo {
     }
 
     override fun githubUser(login: String): Single<GithubUser> {
-        return userDao.findByLogin(login).map{
+        return userDao.findByLogin(login).map {
             githubUserMap(it)
         }
     }
