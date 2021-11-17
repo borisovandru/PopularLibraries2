@@ -1,9 +1,10 @@
 package com.android.popularlibraries
 
 import android.app.Application
-import com.android.popularlibraries.di.AppComponent
-import com.android.popularlibraries.di.AppModule
-import com.android.popularlibraries.di.DaggerAppComponent
+import com.android.popularlibraries.data.di.AppComponent
+import com.android.popularlibraries.data.di.AppModule
+import com.android.popularlibraries.data.di.DaggerAppComponent
+import com.facebook.stetho.Stetho
 
 class App : Application() {
     companion object {
@@ -14,9 +15,11 @@ class App : Application() {
 
     override fun onCreate() {
         super.onCreate()
+        Stetho.initializeWithDefaults(this)
         instance = this
         appComponent = DaggerAppComponent.builder()
             .appModule(AppModule(this))
             .build()
     }
 }
+
